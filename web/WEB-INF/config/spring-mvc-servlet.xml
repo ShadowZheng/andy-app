@@ -19,9 +19,9 @@
     <mvc:annotation-driven />
 
     <!-- 静态资源处理，js,css,images -->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/_ui/**" location="/_ui/" />
 
-    <!-- 配置Json解析器 -->
+    <!-- 配置Json解析器
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1" />
         <property name="mediaTypes">
@@ -33,19 +33,29 @@
         </property>
         <property name="defaultViews">
             <list>
-                <!-- JSON view -->
                 <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
             </list>
         </property>
         <property name="ignoreAcceptHeader" value="true" />
     </bean>
-
-    <!-- 配置视图解析器 -->
+    -->
+    <!-- 配置视图解析器
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
+        <property name="suffix" value=".html" />
     </bean>
+    -->
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/view" />
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="true" />
+        <property name="prefix" value="" />
+        <property name="suffix" value=".html" />
+    </bean>
+
 
     <!-- 文件上传的bean -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

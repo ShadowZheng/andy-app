@@ -1,4 +1,7 @@
 .idea/
-lib/
 out/
-web/WEB-INF/classes
+web/_ui/theme-base/node_modules/
+web/_ui/theme-base/vendor/
+web/WEB-INF/lib/
+target/
+
