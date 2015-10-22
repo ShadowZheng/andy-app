@@ -1,3 +1,4 @@
+*.log
 .idea/
 out/
 web/_ui/theme-base/node_modules/
