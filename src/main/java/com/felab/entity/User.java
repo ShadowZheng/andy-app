@@ -20,6 +20,12 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "USER_TYPE")
+    private int userType;
+
+    @Column(name = "CREDIT")
+    private int credit;
+
     @Column(name = "NICK_NAME")
     private String nickName;
 
@@ -50,6 +56,22 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
+
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
     }
 
     public void setPassword(String password) {

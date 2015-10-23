@@ -20,7 +20,7 @@ public class DaoTest extends UnitTestBase {
     public void testRegister() {
         User user = new User();
         user.setUserName("zz360475097");
-        user.setNickName("zhengmin");
+        user.setNickName("郑敏");
         user.setEmail("360475097@qq.com");
         user.setPassword("zz7366231");
         user.setSex(1);
