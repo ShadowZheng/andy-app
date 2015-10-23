@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
         sass: {
             options: {
-                //includePaths: ['bower_components/foundation/scss']
+                includePaths: ['vendor/normalize-scss/', 'vendor/bootstrap-sass/assets/stylesheets/']
             },
             dist: {
                 options: {
@@ -31,13 +31,21 @@ module.exports = function(grunt) {
                 files: 'scss/**/*.scss',
                 tasks: ['sass']
             }
+        },
+
+        connect: {
+            server: {
+                options: {
+                    port: 7000
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('build', ['sass']);
-    grunt.registerTask('default', ['build','watch']);
+    grunt.registerTask('default', ['build', 'connect','watch']);
 }
-

@@ -1,17 +1,21 @@
 /**
  * Created by azheng on 10/22/2015.
  */
-angular.module('app',['ngRoute']).
+angular.module('app', ['ngRoute', 'app.services']);
+angular.module('app.services', []);
+angular.module('app.directives', []);
+angular.module('app.filters', []);
+
+angular.module('app').
     config(['$routeProvider', function($routeProvider) {
-        var baseUrl = 'WEB-INF/view';
         $routeProvider
             .when('/', {
-                templateUrl: baseUrl + '/home.html',
+                templateUrl: '../view/home.html',
                 controller: 'HomeController'
             })
             .when('/login', {
-                templateUrl: baseUrl + '/home.html',
-                controller: 'HomeController'
+                templateUrl: '../view/login.html',
+                controller: 'LoginController'
             })
             .otherwise({
                 redirectTo: '/'

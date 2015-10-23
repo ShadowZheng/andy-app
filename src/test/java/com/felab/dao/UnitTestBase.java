@@ -1,3 +1,5 @@
+package com.felab.dao;
+
 import org.junit.After;
 import org.junit.Before;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,6 +16,9 @@ public class UnitTestBase {
 
     public UnitTestBase(String path) {
         this.path = path;
+    }
+
+    public UnitTestBase() {
     }
 
     @Before
