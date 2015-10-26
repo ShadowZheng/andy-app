@@ -1,7 +1,7 @@
 package com.felab.service.impl;
 
 import com.felab.dao.UserDao;
-import com.felab.entity.User;
+import com.felab.domain.User;
 import com.felab.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

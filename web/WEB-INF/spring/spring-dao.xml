@@ -23,14 +23,22 @@
     <!-- 配置SessionFactory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.felab.entity" />
+        <property name="packagesToScan" value="com.felab.domain" />
         <property name="hibernateProperties">
             <props>
                 <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="show_sql">true</prop>
                 <prop key="hbm2ddl.auto">create</prop>
+                <!-- 使用EHCache缓存实现方案 -->
+                <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
             </props>
         </property>
+    </bean>
+
+    <bean id="cacheManagerEhcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"></property>
     </bean>
 
     <!-- 配置HibernateTemplate -->

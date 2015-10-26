@@ -1,6 +1,6 @@
 package com.felab.dao;
 
-import com.felab.entity.User;
+import com.felab.domain.User;
 import com.felab.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

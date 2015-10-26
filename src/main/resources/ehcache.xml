@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false">
+    <!-- EhCache在每次启动的时候都要连接到 ehcache 网站上去检查新版本  使用如上的  updateCheck="false"  来禁止这个检查新版本-->
+    <diskStore path="java.io.tmpdir/ehcache" />
+
+    <defaultCache maxElementsInMemory="10000" eternal="false"
+                  overflowToDisk="false" timeToldleSeconds="0" timeToLiveSeconds="0"
+                  diskPersistent="false" diskExpiryThreadIntervalSeconds="120" />
+    <!-- 存放Board的缓存区 -->
+    <cache name="fixedRegion" maxElementsInMemory="100" eternal="true" overflowToDisk="false" />
+
+    <!-- 存放User、Topic、Post的缓存区 -->
+    <cache name="freqChangeRegion" maxElementsInMemory="5000" eternal="false"
+           overflowToDisk="true" timeToIdleSeconds="300" timeToLiveSeconds="1800" />
+
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+           maxElementsInMemory="5000" eternal="true" overflowToDisk="true" />
+    <cache name="org.hibernate.cache.internal.StandardQueryCache"
+           maxElementsInMemory="10000" eternal="false" timeToLiveSeconds="120"
+           overflowToDisk="true" />
+
+</ehcache>

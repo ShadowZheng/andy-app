@@ -1,7 +1,7 @@
 package com.felab.dao.impl;
 
 import com.felab.dao.UserDao;
-import com.felab.entity.User;
+import com.felab.domain.User;
 import org.springframework.stereotype.Repository;
 
 /**

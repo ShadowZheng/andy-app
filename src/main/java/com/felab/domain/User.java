@@ -1,13 +1,14 @@
-package com.felab.entity;
+package com.felab.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by azheng on 10/23/2015.
  */
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User extends BaseDomain {
 
     @Id
     @Column(name = "USER_ID", unique = true)
@@ -37,6 +38,10 @@ public class User {
 
     @Column(name = "INTRODUCTION")
     private String introduction;
+
+    private Date lastVisit;
+
+    private String lastIp;
 
     public int getUserId() {
         return userId;
