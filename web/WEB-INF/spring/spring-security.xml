@@ -24,5 +24,5 @@
 
     <!-- 对密码进行MD5编码 -->
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
-    <bean id="customerUserDetailService" class="com.felab.service.CustomerUserDetailService" />
+    <bean id="customerUserDetailService" class="com.felab.service.CustomUserDetailsService" />
 </beans>

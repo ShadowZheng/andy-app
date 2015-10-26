@@ -39,13 +39,13 @@
         <property name="ignoreAcceptHeader" value="true" />
     </bean>
     -->
-    <!-- 配置视图解析器
+    <!-- 配置视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".html" />
+        <property name="suffix" value=".jsp" />
     </bean>
-    -->
+
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/view" />
     </bean>
