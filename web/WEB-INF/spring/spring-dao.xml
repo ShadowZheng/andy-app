@@ -30,15 +30,15 @@
                 <prop key="show_sql">true</prop>
                 <prop key="hbm2ddl.auto">create</prop>
                 <!-- 使用EHCache缓存实现方案 -->
-                <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
-                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
             </props>
         </property>
     </bean>
 
-    <bean id="cacheManagerEhcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:ehcache.xml"></property>
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml" />
+        <property name="shared" value="true" />
     </bean>
 
     <!-- 配置HibernateTemplate -->

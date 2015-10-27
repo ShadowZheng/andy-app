@@ -12,7 +12,7 @@ public class HomeController {
 
     @RequestMapping
     public String getIndexPage() {
-        return "index";
+        return "/WEB-INF/index.jsp";
     }
 
     @RequestMapping("/home")

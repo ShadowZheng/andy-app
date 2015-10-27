@@ -13,8 +13,8 @@
 <body>
     <h1>Common Page</h1>
     <p>每个人都能访问的页面.</p>
-    <a href="/andy_app/main/admin"> Go AdminPage </a>
+    <a href="/main/admin"> Go AdminPage </a>
     <br />
-    <a href="/andy_app/auth/login">退出登录</a>
+    <a href="/auth/login">退出登录</a>
 </body>
 </html>

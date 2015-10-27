@@ -46,7 +46,7 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+   <!-- <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/view" />
     </bean>
 
@@ -54,7 +54,7 @@
         <property name="cache" value="true" />
         <property name="prefix" value="" />
         <property name="suffix" value=".html" />
-    </bean>
+    </bean>-->
 
 
     <!-- 文件上传的bean -->

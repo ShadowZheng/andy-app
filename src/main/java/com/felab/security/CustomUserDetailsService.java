@@ -1,9 +1,8 @@
-package com.felab.service;
+package com.felab.security;
 
 import com.felab.dao.DbUserDao;
 import com.felab.domain.DbUser;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         UserDetails user = null;
         DbUser dbUser = userDao.getDatabase(s);
         user = new User(dbUser.getUserName(), dbUser.getPassword().toLowerCase(), true, true, true, true, getAuthorities(dbUser.getAccess()));
-        return null;
+        return user;
     }
 
     public Collection<GrantedAuthority> getAuthorities(Integer access) {
