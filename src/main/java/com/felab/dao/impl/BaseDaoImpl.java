@@ -26,6 +26,14 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         entityClass = (Class) params[0];
     }
 
+    public HibernateTemplate getHibernateTemplate() {
+        return hibernateTemplate;
+    }
+
+    public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+        this.hibernateTemplate = hibernateTemplate;
+    }
+
     /**
      * 保存实体
      * @param entity 实体类

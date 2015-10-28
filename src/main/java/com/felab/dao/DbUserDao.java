@@ -1,7 +1,5 @@
 package com.felab.dao;
 
-import com.felab.domain.DbUser;
-
 import java.util.ArrayList;
 import java.util.List;
 

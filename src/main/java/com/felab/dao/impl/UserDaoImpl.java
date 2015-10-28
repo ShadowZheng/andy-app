@@ -10,4 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 
+    @Override
+    public User findByUsername(String username) {
+        return null;
+    }
 }

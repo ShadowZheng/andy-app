@@ -7,5 +7,5 @@ import com.felab.domain.User;
  */
 public interface UserDao extends BaseDao<User> {
 
-
+    User findByUsername(String username);
 }

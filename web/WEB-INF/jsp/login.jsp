@@ -13,15 +13,17 @@
 <body>
     <h1>Login</h1>
     <div id="login-error">${error}</div>
-    <form action="../j_spring_security_check" method="post">
+    <form action="j_spring_security_check" method="post">
         <p>
-            <label for="j_username">Username</label>
-            <input id="j_username" name="j_username" type="text" />
+            <label for="j_username">用户名：</label>
+            <input id="j_username" name="j_username" type="text" size="20" maxlength="50" />
         </p>
         <p>
-            <label for="j_password">Password</label>
+            <label for="j_password">密码：</label>
             <input id="j_password" name="j_password" type="password" />
         </p>
+        <input id="_spring_security_remember_me" name="_spring_security_remember_me" type="checkbox" value="true">
+        <label for="_spring_security_remember_me">Remember me</label>
         <input type="submit" value="Login" />
     </form>
 </body>

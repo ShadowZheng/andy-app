@@ -23,7 +23,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -47,6 +47,8 @@
           <root url="jar://$USER_HOME$/.ideaLibSources/hibernate-core-4.2.2.Final-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/spring-context-support-4.1.6.RELEASE-sources.jar!/" />
           <root url="jar://$USER_HOME$/.ideaLibSources/spring-web-4.1.6.RELEASE-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/spring-security-core-3.2.5.RELEASE-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/spring-security-web-3.2.5.RELEASE-sources.jar!/" />
         </SOURCES>
         <jarDirectory url="file://$MODULE_DIR$/web/WEB-INF/lib" recursive="false" />
       </library>

@@ -1,14 +1,20 @@
 package com.felab.domain;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by azheng on 10/23/2015.
  */
 @Entity
 @Table(name = "T_USER")
-public class User extends BaseDomain {
+public class User implements UserDetails {
 
     @Id
     @Column(name = "USER_ID", unique = true)
@@ -16,16 +22,10 @@ public class User extends BaseDomain {
     private int userId;
 
     @Column(name = "USER_NAME")
-    private String userName;
+    private String username;
 
     @Column(name = "PASSWORD")
     private String password;
-
-    @Column(name = "USER_TYPE")
-    private int userType;
-
-    @Column(name = "CREDIT")
-    private int credit;
 
     @Column(name = "NICK_NAME")
     private String nickName;
@@ -33,15 +33,22 @@ public class User extends BaseDomain {
     @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "SEX")
-    private int sex;
+    @Column(name = "ROLE")
+    private String role;
 
-    @Column(name = "INTRODUCTION")
-    private String introduction;
+    @Column(name = "ACCOUNT_NON_EXPIRED")
+    private boolean accountNonExpired;
 
-    private Date lastVisit;
+    @Column(name = "ACCOUNT_NON_LOCKED")
+    private boolean accountNonLocked;
 
-    private String lastIp;
+    @Column(name = "CREDENTIALS_NON_EXPIRED")
+    private boolean credentialsNonExpired;
+
+    @Column(name = "ENABLED")
+    private boolean enabled;
+
+
 
     public int getUserId() {
         return userId;
@@ -51,36 +58,30 @@ public class User extends BaseDomain {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public int getUserType() {
-        return userType;
-    }
-
-    public void setUserType(int userType) {
-        this.userType = userType;
-    }
-
-    public int getCredit() {
-        return credit;
-    }
-
-    public void setCredit(int credit) {
-        this.credit = credit;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getNickName() {
@@ -99,19 +100,31 @@ public class User extends BaseDomain {
         this.email = email;
     }
 
-    public int getSex() {
-        return sex;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        GrantedAuthority authority = new SimpleGrantedAuthority(role);
+        authorities.add(authority);
+        return authorities;
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
 }
