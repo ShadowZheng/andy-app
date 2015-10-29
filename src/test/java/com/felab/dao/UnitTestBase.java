@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
+
 /**
  * Created by azheng on 10/19/2015.
  */
@@ -26,6 +28,8 @@ public class UnitTestBase {
         if (StringUtils.isEmpty(path)) {
             path = "classpath*:spring-*.xml";
         }
+        File file = new File(path);
+        System.out.println(file.exists());
         context = new ClassPathXmlApplicationContext(path);
         context.start();
     }
@@ -35,7 +39,7 @@ public class UnitTestBase {
         context.destroy();
     }
 
-    public Object getBean(String id) {
-        return context.getBean(id);
+    public Object getBean(Class cls) {
+        return context.getBean(cls);
     }
 }
