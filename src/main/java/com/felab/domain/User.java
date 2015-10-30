@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,43 +11,27 @@ import java.util.List;
 /**
  * Created by azheng on 10/23/2015.
  */
-@Entity
-@Table(name = "T_USER")
 public class User implements UserDetails {
 
-    @Id
-    @Column(name = "USER_ID", unique = true)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    @Column(name = "USER_NAME")
-    private String username;
+    private String userName;
 
-    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "NICK_NAME")
     private String nickName;
 
-    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "ROLE")
     private String role;
 
-    @Column(name = "ACCOUNT_NON_EXPIRED")
-    private boolean accountNonExpired;
+    private boolean accountNonExpired = true;
 
-    @Column(name = "ACCOUNT_NON_LOCKED")
-    private boolean accountNonLocked;
+    private boolean accountNonLocked = true;
 
-    @Column(name = "CREDENTIALS_NON_EXPIRED")
-    private boolean credentialsNonExpired;
+    private boolean credentialsNonExpired = true;
 
-    @Column(name = "ENABLED")
-    private boolean enabled;
-
-
+    private boolean enabled = true;
 
     public int getUserId() {
         return userId;
@@ -60,11 +43,11 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override

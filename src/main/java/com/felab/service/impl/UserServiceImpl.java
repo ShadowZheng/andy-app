@@ -19,14 +19,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void register(User user) {
-        userDao.save(user);
+        userDao.add(user);
     }
 
     @Override
     public void delete(int id) {
-        User user = new User();
-        user.setUserId(id);
-        userDao.delete(user);
+        userDao.delete(id);
     }
 
     @Override
@@ -36,6 +34,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User find(int id) {
-        return userDao.get(id);
+        return userDao.findById(id);
     }
 }

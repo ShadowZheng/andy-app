@@ -1,22 +1,21 @@
 package com.felab.dao;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * Created by azheng on 10/23/2015.
+ * Created by azheng on 10/30/2015.
  */
 public interface BaseDao<T> {
 
-    void save(T entity);
+    // 增加
+    void add(T entity);
 
-    void delete(T entity);
+    // 删除
+    void delete(Serializable id);
 
+    // 修改
     void update(T entity);
 
-    T get(Serializable id);
-
-    T load(Serializable id);
-
-    List<T> loadAll();
+    // 根据ID查询
+    void findById(Serializable id);
 }

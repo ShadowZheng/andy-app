@@ -1,10 +1,12 @@
 package com.felab.dao;
 
 import com.felab.domain.User;
-import com.felab.repository.UserRepository;
+import com.felab.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Created by azheng on 10/23/2015.
@@ -13,45 +15,46 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 public class DaoTest extends UnitTestBase {
 
     public DaoTest() {
-        super("C:\\Users\\azheng\\IdeaProjects\\andy_app\\src\\main\\resources\\spring-data-jpa.xml");
+        super("classpath:spring-dao.xml");
     }
 
     @Test
     public void testRegister() {
         User user = new User();
-        user.setUsername("zz360475097");
+        user.setUserName("zz3604750973");
         user.setNickName("郑敏");
-        user.setEmail("360475097@qq.com");
+        user.setEmail("3604750972@qq.com");
         user.setPassword("zz7366231");
-        UserRepository repository = (UserRepository) getBean(UserRepository.class);
-        repository.save(user);
+        user.setRole("ROLE_USER");
+        UserService userService = (UserService) getBean(UserService.class);
+        userService.register(user);
     }
 
     @Test
     public void testUpdate() {
-//        User user = new User();
-//        user.setUserId(1);
-//        user.setUserName("yaoying");
-//        UserService userService = (UserService) getBean("userServiceImpl");
-//        userService.update(user);
+        UserService service = (UserService) getBean(UserService.class);
+        User user = service.find(1);
+        user.setUserName("yaoying");
+        service.update(user);
     }
 
     @Test
     public void testDelete() {
-//        UserService userService = (UserService) getBean("userServiceImpl");
-//        userService.delete(1);
+        UserService userService = (UserService) getBean(UserService.class);
+        userService.delete(1);
     }
 
     @Test
     public void testFind() {
-//        User user = new User();
-//        user.setUserName("zz360475097");
-//        user.setNickName("zhengmin");
-//        user.setEmail("360475097@qq.com");
-//        user.setPassword("zz7366231");
-//        user.setSex(1);
-//        user.setIntroduction("sss");
-//        UserService userService = (UserService) getBean("userServiceImpl");
-//        User findUser = userService.find(2);
+        UserDao userDao = (UserDao) getBean(UserDao.class);
+        User user = userDao.findById(1);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testFindAll() {
+        UserDao userDao = (UserDao) getBean(UserDao.class);
+        List<User> users = userDao.findAll();
+        System.out.println(users);
     }
 }

@@ -11,26 +11,7 @@
 
     <!-- 定义全限定类名的别名 -->
     <typeAliases>
-        <!--<typeAlias type=""-->
+        <typeAlias type="com.felab.domain.User" alias="User" />
     </typeAliases>
 
-    <!-- 组装mybatis映射文件 -->
-    <mappers>
-        <mapper resource=""
-    </mappers>
-
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="${}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
-            </dataSource>
-        </environment>
-    </environments>
-    <mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
-    </mappers>
 </configuration>
