@@ -18,7 +18,7 @@
         <!-- logout -->
         <logout invalidate-session="true" logout-success-url="/auth/login" logout-url="/j_spring_security_logout" />
         <!-- remember me -->
-        <remember-me key="andy_app" />
+        <remember-me key="andy_app" user-service-ref="customUserDetailsService" />
     </http>
 
     <authentication-manager>

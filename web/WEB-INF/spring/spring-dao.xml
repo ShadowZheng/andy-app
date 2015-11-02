@@ -16,7 +16,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${jdbc.driver}" />
         <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}" />
+        <property name="username" value="${jdbc.userName}" />
         <property name="password" value="${jdbc.password}" />
     </bean>
 
@@ -24,7 +24,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:mybatis.xml" />
-        <property name="mapperLocations" value="classpath:mappers" />
+        <property name="mapperLocations" value="classpath:mappers/*.xml" />
     </bean>
 
     <!-- mybatis-spring提供的一个转换器，他可以映射接口直接转换为Spring容器中的Bean -->

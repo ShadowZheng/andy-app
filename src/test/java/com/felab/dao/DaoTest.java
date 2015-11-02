@@ -21,9 +21,9 @@ public class DaoTest extends UnitTestBase {
     @Test
     public void testRegister() {
         User user = new User();
-        user.setUserName("zz3604750973");
-        user.setNickName("郑敏");
-        user.setEmail("3604750972@qq.com");
+        user.setUserName("zz3604750975");
+        user.setNickName("郑敏5");
+        user.setEmail("3604750975@qq.com");
         user.setPassword("zz7366231");
         user.setRole("ROLE_USER");
         UserService userService = (UserService) getBean(UserService.class);
@@ -33,8 +33,8 @@ public class DaoTest extends UnitTestBase {
     @Test
     public void testUpdate() {
         UserService service = (UserService) getBean(UserService.class);
-        User user = service.find(1);
-        user.setUserName("yaoying");
+        User user = service.find(3);
+        user.setUserName("zhengmin");
         service.update(user);
     }
 

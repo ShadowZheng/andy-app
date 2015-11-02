@@ -17,5 +17,5 @@ public interface BaseDao<T> {
     void update(T entity);
 
     // 根据ID查询
-    void findById(Serializable id);
+    T findById(Serializable id);
 }

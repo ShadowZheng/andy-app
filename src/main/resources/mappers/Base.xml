@@ -5,27 +5,17 @@
 
     <!-- 增加 -->
     <insert id="add">
-        INSERT INTO (fleids) VALUES (values)
+        INSERT INTO (fields) VALUES (values)
     </insert>
 
     <!-- 删除 -->
     <delete id="delete" parameterType="int">
-        DELETE FROM T_USER WHERE USER_ID = #{userId}
+        DELETE FROM TABLE WHERE id in (${ids})
     </delete>
 
     <!-- 更改 -->
     <update id="update" parameterType="User">
-        UPDATE T_USER SET
-          USER_NAME=#{userName},
-          PASSWORD=#{password},
-          NICK_NAME=#{nickName},
-          EMAIL=#{email},
-          ROLE=#{role},
-          ACCOUNT_NON_EXPIRED=#{accountNonExpired},
-          ACCOUNT_NON_LOCKED=#{accountNonLocked},
-          CREDENTIALS_NON_EXPIRED=#{credentialsNonExpired},
-          ENABLED=#{enabled}
-        WHERE USER_ID=#{userId}
+        UPDATE TABLE SET ($(fleids)) WHERE id=(${id})
     </update>
 
     <resultMap id="userMap" type="User">
