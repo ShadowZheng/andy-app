@@ -13,24 +13,37 @@ import java.util.List;
  */
 public class User implements UserDetails {
 
+    // 用户ID
     private int userId;
 
-    private String userName;
+    // 用户名
+    private String username;
 
+    // 密码
     private String password;
 
-    private String nickName;
+    // 加密盐
+    private String salt;
 
+    // 昵称
+    private String nickname;
+
+    // 邮箱
     private String email;
 
+    // 角色
     private String role;
 
+    // 账户是否过期
     private boolean accountNonExpired = true;
 
+    // 账户是否被锁
     private boolean accountNonLocked = true;
 
+    // 密码是否过期
     private boolean credentialsNonExpired = true;
 
+    // 是否启用
     private boolean enabled = true;
 
     public int getUserId() {
@@ -41,13 +54,14 @@ public class User implements UserDetails {
         this.userId = userId;
     }
 
+
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -59,6 +73,14 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     public String getRole() {
         return role;
     }
@@ -67,12 +89,12 @@ public class User implements UserDetails {
         this.role = role;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {

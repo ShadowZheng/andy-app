@@ -4,6 +4,9 @@ import com.felab.dao.UserDao;
 import com.felab.domain.User;
 import com.felab.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserDao userDao;
@@ -35,5 +41,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public User find(int id) {
         return userDao.findById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userDao.findByUsername(username);
+    }
+
+    @Override
+    public void changePassword(String username, String newPassword) {
+        User user = (User) loadUserByUsername(username);
+        String encodePassword = passwordEncoder.encodePassword(newPassword, user.getSalt());
+        userDao.changePassword(username, encodePassword);
     }
 }

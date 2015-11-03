@@ -10,7 +10,7 @@
             USER_NAME,PASSWORD,NICK_NAME,EMAIL,ROLE,ACCOUNT_NON_EXPIRED,ACCOUNT_NON_LOCKED,CREDENTIALS_NON_EXPIRED,ENABLED
         )
         VALUES (
-            #{userName},#{password},#{nickName},#{email},#{role},#{accountNonExpired},#{accountNonLocked},#{credentialsNonExpired},#{enabled}
+            #{username},#{password},#{nickname},#{email},#{role},#{accountNonExpired},#{accountNonLocked},#{credentialsNonExpired},#{enabled}
         )
     </insert>
 
@@ -22,9 +22,9 @@
     <!-- 更改 -->
     <update id="update" parameterType="User">
         UPDATE T_USER SET
-          USER_NAME=#{userName},
+          USER_NAME=#{username},
           PASSWORD=#{password},
-          NICK_NAME=#{nickName},
+          NICK_NAME=#{nickname},
           EMAIL=#{email},
           ROLE=#{role},
           ACCOUNT_NON_EXPIRED=#{accountNonExpired},
@@ -34,11 +34,16 @@
         WHERE USER_ID=#{userId}
     </update>
 
+    <!-- 修改用户密码 -->
+    <update id="changePassword" parameterType="String">
+        UPDATE T_USER SET PASSWORD=#{password} WHERE USER_NAME=#{username}
+    </update>
+
     <resultMap id="userMap" type="User">
         <id column="USER_ID" property="userId" />
-        <result column="USER_NAME" property="userName" />
+        <result column="USER_NAME" property="username" />
         <result column="PASSWORD" property="password" />
-        <result column="NICK_NAME" property="nickName" />
+        <result column="NICK_NAME" property="nickname" />
         <result column="EMAIL" property="email" />
         <result column="ROLE" property="role" />
         <result column="ACCOUNT_NON_EXPIRED" property="accountNonExpired" />
@@ -50,6 +55,11 @@
     <!-- 根据ID查询用户 -->
     <select id="findById" parameterType="int" resultType="User" resultMap="userMap">
         SELECT * FROM T_USER WHERE USER_ID = #{userId}
+    </select>
+
+    <!-- 根据用户名查找 -->
+    <select id="findByUsername" parameterType="String" resultType="User" resultMap="userMap">
+        SELECT * FROM T_USER WHERE USER_NAME = #{username}
     </select>
 
     <!-- 查询所有用户 -->

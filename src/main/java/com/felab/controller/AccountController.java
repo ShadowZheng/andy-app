@@ -19,6 +19,7 @@ public class AccountController {
 
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
     public String changePassword(@RequestParam("password") String newPassword) {
+//        userService.changePassword();
         return null;
     }
 }

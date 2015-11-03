@@ -1,6 +1,7 @@
 package com.felab.dao;
 
 import com.felab.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,7 +23,10 @@ public interface UserDao {
     User findById(int userId);
 
     // 通过用户名查询用户
-    User findByUserName(String userName);
+    User findByUsername(String userName);
+
+    // 更改密码
+    void changePassword(@Param("username") String username,@Param("password") String newPassword);
 
     // 查询所有
     List<User> findAll();

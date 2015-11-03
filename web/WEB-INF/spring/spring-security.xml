@@ -18,16 +18,28 @@
         <!-- logout -->
         <logout invalidate-session="true" logout-success-url="/auth/login" logout-url="/j_spring_security_logout" />
         <!-- remember me -->
-        <remember-me key="andy_app" user-service-ref="customUserDetailsService" />
+        <remember-me key="andy_app" user-service-ref="userServiceImpl" />
     </http>
 
     <authentication-manager>
-        <authentication-provider user-service-ref="customerUserDetailService">
-            <password-encoder ref="passwordEncoder" />
+        <authentication-provider user-service-ref="userServiceImpl">
+            <password-encoder ref="passwordEncoder">
+                <salt-source ref="saltSource" />
+            </password-encoder>
         </authentication-provider>
     </authentication-manager>
 
-    <!-- 对密码进行MD5加密 -->
+    <!-- MD5加密器 -->
     <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
-    <beans:bean id="customerUserDetailService" class="com.felab.security.CustomUserDetailsService" />
+
+
+    <!-- 启动数据库的时候初始化加密所有用户的密码 -->
+    <beans:bean class="com.felab.security.DatabasePasswordSecureBean" init-method="secureDatabase" depends-on="dataSource">
+        <beans:property name="dataSource" ref="dataSource" />
+    </beans:bean>
+
+    <!-- 使用ReflectionSaltSource设置用户信息为密码加密盐 -->
+    <beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+        <beans:property name="userPropertyToUse" value="username" />
+    </beans:bean>
 </beans:beans>
